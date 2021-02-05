@@ -8,29 +8,56 @@
 #include "ft_string.h"
 
 #define DEFAULT_LEN 1024
-#define DEFAULT_ALPHA "abcdefghijklmnopqrstuvwxyz0123456789"
+#define DEFAULT_ALPHA "abcdefghijklmnopqrstuvwxyz"
+#define DEFAULT_SPEC_ALPH "\"#$@%^&*()_+=-}{|\/\\/><"
+#define SYM_ALPHA ",.?!"
+#define NUM_ALPHA "0123456789"
 #define DEFAULT_FILE_NAME "gen_file" 
+
 
 int main(int argc, char **argv)
 {
+
 	int opt = 0;
 	int len = DEFAULT_LEN;
 	char *filename = NULL;
 	char *alpha = NULL;
 
+    alpha = DEFAULT_ALPHA;
+    
 	srand(time(NULL));	
     /* 
-    join(char *s1, char *s2)
+    srand - в функцию - в конце вернуть начальное значение6
+    char* join(char *s1, char *s2)
     d - маленькие
     u - большие
     n - numbers
     p - punctuation
     s - special symbols
+	e - allow empty lines
     */
-	while ((opt = getopt(argc, argv, "dunspa:f:l:")) != -1)
+	while ((opt = getopt(argc, argv, "edunspa:f:l:")) != -1)
 	{
 		switch (opt)
 		{
+            case 'd':
+                alpha = ft_strdecrease(DEFAULT_ALPHA);
+                break;
+            case 'u':
+                alpha = ft_strcapitalize(DEFAULT_ALPHA);
+                break;
+            case 'n':
+                alpha = join(DEFAULT_ALPHA, NUM_ALPHA);
+                break;
+            case 'p':
+                alpha = join(DEFAULT_ALPHA, SYM_ALPHA);
+                break;
+            case 's':
+                alpha = join(DEFAULT_ALPHA, DEFAULT_SPEC_ALPH);
+                break;
+            case 'e':
+                
+                break;
 			case 'a':
 				printf("a - %s\n", optarg);
 				alpha = ft_strdup(optarg);

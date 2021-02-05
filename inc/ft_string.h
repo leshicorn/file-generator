@@ -17,6 +17,8 @@ char	*ft_strncat(char* dest, char* src, size_t n);
 
 char    *ft_join(char **strs, char *sep);
 int     ft_word_count(char* str, char* delim);
+char    *ft_strdecrease(char *str);
+char    *ft_strcapitalize(char *str);
 
 char    *ft_strstr (char * haystack, char * needle);
 char    *ft_strchr (char * str, int sym);
